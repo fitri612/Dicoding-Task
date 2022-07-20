@@ -1,0 +1,25 @@
+import { showFormattedDate } from '../utils';
+function TodoItem({ todo, deleteTodos, archiveTodos }) {
+  return (
+    <div className="box-active-todo">
+      <div className="card bg-1">
+        <h3 className="text-white border-bottom py-1">{todo.title}</h3>
+        <p>{showFormattedDate(todo.createdAt)}</p>
+        <div className="card-body">{todo.body}</div>
+        <div className="card-footer mt-auto">
+          <button className="btn-delete" onClick={() => deleteTodos(todo.id)}>
+            Hapus
+          </button>
+          <div className="mb-1"></div>
+          <button
+            className="btn-archive w-100"
+            onClick={() => archiveTodos(todo.id, !todo.archived)}
+          >
+            {todo.archived ? 'Pindahkan' : 'Arsipkan'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+export default TodoItem;
